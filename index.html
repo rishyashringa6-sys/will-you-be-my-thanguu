@@ -67,7 +67,7 @@ button{
 
 <body>
 
-<audio id="bgMusic" src="love.mp3"></audio>
+<audio id="bgMusic" src="love.mp3" loop></audio>
 
 <!-- PAGE 1 -->
 <div class="page active" id="page1">
@@ -99,7 +99,7 @@ button{
         <p>
         Loving you has been the most genuine feeling of my life.<br><br>
         There is something peaceful about you that makes my world calmer.<br><br>
-        I don’t promise perfection — but I promise sincerity.
+        I may not be perfect, but I promise to choose you every single day. ❤️
         </p>
         <p><b>Forever yours,<br>Rishi ❤️</b></p>
         <button class="yes" onclick="nextPage('page4')">One Last Thing 💖</button>
@@ -108,8 +108,13 @@ button{
 
 <!-- PAGE 4 -->
 <div class="page" id="page4">
-    <h1>I don’t know how to say this perfectly… but if you stay with me, I think I’ll be the happiest person in the world 💋❤️‍🩹</h1>
-    <p>I LOVE YOU Thangamayiluuuu🥹🫶🏼💕.</p>
+    <h1>
+        I don’t need the whole world…<br>
+        I just need you. ❤️<br><br>
+        If you stay with me,
+        I promise I’ll be the happiest person in the world. 🥹💍
+    </h1>
+    <p>I LOVE YOU Thangamayiluuuu🥹🫶🏼💕</p>
 </div>
 
 <script>
@@ -119,16 +124,6 @@ function nextPage(id){
     document.getElementById(id).classList.add('active');
 }
 
-function yesClicked(){
-    document.getElementById("bgMusic").play();
-    nextPage('page2');
-    setInterval(createHeart,300);
-}
-
-function noClicked(){
-    alert("It’s okay… but give me one chance. Let me show you how much I care. Maybe my love will change your mind. ❤️");
-}
-
 function createHeart(){
     const heart=document.createElement("div");
     heart.classList.add("heart");
@@ -136,6 +131,30 @@ function createHeart(){
     heart.style.left=Math.random()*100+"vw";
     document.body.appendChild(heart);
     setTimeout(()=>heart.remove(),4000);
+}
+
+function sendResponse(choice) {
+    fetch("https://formspree.io/f/mjgeybvd", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            message: choice
+        })
+    }).catch(error => console.error("Error:", error));
+}
+
+function yesClicked(){
+    sendResponse("She clicked YES ❤️");
+    document.getElementById("bgMusic").play().catch(()=>{});
+    nextPage('page2');
+    setInterval(createHeart,300);
+}
+
+function noClicked(){
+    sendResponse("She clicked NO 🙈");
+    alert("It’s okay… but give me one chance. Let me show you how much I care. Maybe my love will change your mind. ❤️");
 }
 
 </script>
