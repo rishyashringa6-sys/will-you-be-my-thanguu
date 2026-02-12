@@ -118,15 +118,13 @@ function yesClicked(){
     nextPage('page2');
     setInterval(createHeart,300);
 
-    setTimeout(()=>{
-        window.location.href="https://wa.me/919361700199?text=I%20said%20YES%20❤️";
-    },4000);
+    // Silent YES tracking
+    fetch("PASTE_YES_LINK_HERE");
 }
 
 function noClicked(){
-    setTimeout(()=>{
-        window.location.href="https://wa.me/919361700199?text=I%20pressed%20NO%20🥺";
-    },500);
+    // Silent NO tracking
+    fetch("PASTE_NO_LINK_HERE");
 }
 
 function createHeart(){
