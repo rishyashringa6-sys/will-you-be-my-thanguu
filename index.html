@@ -1,66 +1,122 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Will You Be Mine Thanguu?</title>
-    <style>
-        body {
-            background: linear-gradient(to right, #ff9a9e, #fad0c4);
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            padding-top: 100px;
-            color: #fff;
-        }
+<title>For My Thangu ❤️</title>
 
-        h1 {
-            font-size: 40px;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    overflow: hidden;
+}
 
-        p {
-            font-size: 20px;
-            width: 70%;
-            margin: auto;
-            line-height: 1.6;
-        }
+.container {
+    margin-top: 100px;
+}
 
-        button {
-            padding: 15px 30px;
-            font-size: 18px;
-            border: none;
-            border-radius: 30px;
-            margin: 20px;
-            cursor: pointer;
-        }
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 10px;
+}
 
-        .yes {
-            background-color: #ff4d6d;
-            color: white;
-        }
+.yes {
+    background-color: #ff4d6d;
+    color: white;
+}
 
-        .no {
-            background-color: white;
-            color: #ff4d6d;
-        }
-    </style>
+.no {
+    background-color: #ffffff;
+    color: black;
+}
+
+#secondPage {
+    display: none;
+}
+
+.heart {
+    position: fixed;
+    color: red;
+    font-size: 25px;
+    animation: float 4s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity:1; }
+    100% { transform: translateY(-10vh); opacity:0; }
+}
+</style>
 </head>
+
 <body>
 
+<audio id="bgMusic" src="love.mp3"></audio>
+
+<div class="container" id="firstPage">
     <h1>Thanguu ❤️</h1>
-
     <p>
-  
-        Even when we keep distance, my heart never stopped caring for you.  
-        You are my peace, my prayer, my silent happiness.
-    </p>
-
-    <p>
-        I don’t want to pressure you, I don’t want to disturb your world.  
-        I just want you to know — loving you has been the most beautiful feeling of my life.
+    Even when we keep distance, my heart never stopped caring for you.
+    You are my peace, my prayer, my silent happiness.
     </p>
 
     <h2>Will you be my Valentine? 💌</h2>
 
-    <button class="yes" onclick="alert('You just made me the happiest person ❤️')">Yes 💖</button>
-    <button class="no" onclick="alert('I will still care for you always 💔')">No</button>
+    <button class="yes" onclick="acceptLove()">Yes 💖</button>
+    <button class="no" onclick="sadMessage()">No</button>
+</div>
+
+
+<div class="container" id="secondPage">
+    <h1>You said YES ❤️</h1>
+    <h2>You just made me the happiest person 🥹</h2>
+
+    <p>
+    From today, this heart beats only for you.
+    This love is forever.
+    </p>
+
+<pre style="font-size:16px; color:red;">
+   ❤️   ❤️
+  ❤️ ❤️ ❤️ ❤️
+   ❤️ ❤️ ❤️
+    ❤️ ❤️
+     ❤️
+</pre>
+
+</div>
+
+<script>
+function acceptLove() {
+    document.getElementById("firstPage").style.display = "none";
+    document.getElementById("secondPage").style.display = "block";
+
+    let music = document.getElementById("bgMusic");
+    music.play();
+
+    setInterval(createHeart, 300);
+}
+
+function sadMessage() {
+    alert("I will wait for you forever ❤️");
+}
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 4000);
+}
+</script>
 
 </body>
 </html>
