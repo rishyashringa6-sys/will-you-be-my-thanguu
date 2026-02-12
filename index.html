@@ -72,7 +72,7 @@ button{
     <button class="no" onclick="noClicked()">No 🙈</button>
 </div>
 
-<!-- PAGE 2 (PROS) -->
+<!-- PAGE 2 -->
 <div class="page" id="page2">
     <div class="card">
         <h2>Why Choose Me ❤️</h2>
@@ -86,7 +86,7 @@ button{
     </div>
 </div>
 
-<!-- PAGE 3 (LETTER) -->
+<!-- PAGE 3 -->
 <div class="page" id="page3">
     <div class="card">
         <h2>My Dearest ❤️</h2>
@@ -100,7 +100,7 @@ button{
     </div>
 </div>
 
-<!-- PAGE 4 (CELEBRATION) -->
+<!-- PAGE 4 -->
 <div class="page" id="page4">
     <h1>You just made me the happiest person ❤️</h1>
     <p>This heart beats only for you.</p>
@@ -118,14 +118,15 @@ function yesClicked(){
     nextPage('page2');
     setInterval(createHeart,300);
 
-    // WhatsApp Notification (replace number below)
     setTimeout(()=>{
-        window.location.href="https://wa.me/91YOURNUMBER?text=I%20said%20YES%20❤️";
+        window.location.href="https://wa.me/919361700199?text=I%20said%20YES%20❤️";
     },4000);
 }
 
 function noClicked(){
-    window.location.href="https://wa.me/91YOURNUMBER?text=I%20pressed%20NO%20🥺";
+    setTimeout(()=>{
+        window.location.href="https://wa.me/919361700199?text=I%20pressed%20NO%20🥺";
+    },500);
 }
 
 function createHeart(){
