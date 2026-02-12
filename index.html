@@ -1,54 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>For My Thangu ❤️</title>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-    margin: 0;
+body{
+    margin:0;
     font-family: Arial, sans-serif;
-    text-align: center;
-    background: linear-gradient(to right, #ff9a9e, #fad0c4);
-    overflow: hidden;
+    text-align:center;
+    background: linear-gradient(to right,#ff9a9e,#fad0c4);
+    overflow:hidden;
 }
 
-.container {
-    margin-top: 100px;
+.page{
+    display:none;
+    padding:40px 20px;
 }
 
-button {
-    padding: 12px 25px;
-    font-size: 18px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    margin: 10px;
+.active{
+    display:block;
 }
 
-.yes {
-    background-color: #ff4d6d;
-    color: white;
+.card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    width:90%;
+    max-width:400px;
+    margin:20px auto;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-.no {
-    background-color: #ffffff;
-    color: black;
+button{
+    padding:12px 25px;
+    font-size:16px;
+    border:none;
+    border-radius:25px;
+    margin:10px;
+    cursor:pointer;
 }
 
-#secondPage {
-    display: none;
-}
+.yes{ background:#ff4d6d; color:white; }
+.no{ background:#ccc; }
 
-.heart {
-    position: fixed;
-    color: red;
-    font-size: 25px;
+.heart{
+    position:fixed;
+    color:red;
+    font-size:20px;
     animation: float 4s linear infinite;
 }
 
-@keyframes float {
-    0% { transform: translateY(100vh); opacity:1; }
-    100% { transform: translateY(-10vh); opacity:0; }
+@keyframes float{
+    0%{ transform:translateY(100vh); opacity:1;}
+    100%{ transform:translateY(-10vh); opacity:0;}
 }
 </style>
 </head>
@@ -57,65 +63,80 @@ button {
 
 <audio id="bgMusic" src="love.mp3"></audio>
 
-<div class="container" id="firstPage">
-    <h1>Thanguu ❤️</h1>
-    <p>
-    Even when we keep distance, my heart never stopped caring for you.
-    You are my peace, my prayer, my silent happiness.
-    </p>
-
-    <h2>Will you be my Valentine? 💌</h2>
-
-    <button class="yes" onclick="acceptLove()">Yes 💖</button>
-    <button class="no" onclick="sadMessage()">No</button>
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+    <h1>For You ❤️</h1>
+    <p>Before anything… I want to ask you something.</p>
+    <h3>Will you be mine? 💌</h3>
+    <button class="yes" onclick="yesClicked()">Yes ❤️</button>
+    <button class="no" onclick="noClicked()">No 🙈</button>
 </div>
 
+<!-- PAGE 2 (PROS) -->
+<div class="page" id="page2">
+    <div class="card">
+        <h2>Why Choose Me ❤️</h2>
+        <p>• I will always respect you.</p>
+        <p>• If the world stands against you, I’ll stand against the world for you.</p>
+        <p>• Anything and everything for you.</p>
+        <p>• I will listen when you need someone.</p>
+        <p>• I will stand by you in every situation.</p>
+        <p>• I will care for you genuinely and honestly.</p>
+        <button class="yes" onclick="nextPage('page3')">Next 💌</button>
+    </div>
+</div>
 
-<div class="container" id="secondPage">
-    <h1>You said YES ❤️</h1>
-    <h2>You just made me the happiest person 🥹</h2>
+<!-- PAGE 3 (LETTER) -->
+<div class="page" id="page3">
+    <div class="card">
+        <h2>My Dearest ❤️</h2>
+        <p>
+        Loving you has been the most genuine feeling of my life.<br><br>
+        There is something peaceful about you that makes my world calmer.<br><br>
+        I don’t promise perfection — but I promise sincerity.
+        </p>
+        <p><b>Forever yours,<br>Rishi ❤️</b></p>
+        <button class="yes" onclick="nextPage('page4')">One Last Thing 💖</button>
+    </div>
+</div>
 
-    <p>
-    From today, this heart beats only for you.
-    This love is forever.
-    </p>
-
-<pre style="font-size:16px; color:red;">
-   ❤️   ❤️
-  ❤️ ❤️ ❤️ ❤️
-   ❤️ ❤️ ❤️
-    ❤️ ❤️
-     ❤️
-</pre>
-
+<!-- PAGE 4 (CELEBRATION) -->
+<div class="page" id="page4">
+    <h1>You just made me the happiest person ❤️</h1>
+    <p>This heart beats only for you.</p>
 </div>
 
 <script>
-function acceptLove() {
-    document.getElementById("firstPage").style.display = "none";
-    document.getElementById("secondPage").style.display = "block";
 
-    let music = document.getElementById("bgMusic");
-    music.play();
-
-    setInterval(createHeart, 300);
+function nextPage(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
 }
 
-function sadMessage() {
-    alert("I will wait for you forever ❤️");
+function yesClicked(){
+    document.getElementById("bgMusic").play();
+    nextPage('page2');
+    setInterval(createHeart,300);
+
+    // WhatsApp Notification (replace number below)
+    setTimeout(()=>{
+        window.location.href="https://wa.me/91YOURNUMBER?text=I%20said%20YES%20❤️";
+    },4000);
 }
 
-function createHeart() {
-    const heart = document.createElement("div");
+function noClicked(){
+    window.location.href="https://wa.me/91YOURNUMBER?text=I%20pressed%20NO%20🥺";
+}
+
+function createHeart(){
+    const heart=document.createElement("div");
     heart.classList.add("heart");
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
     document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 4000);
+    setTimeout(()=>heart.remove(),4000);
 }
+
 </script>
 
 </body>
