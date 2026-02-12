@@ -10,18 +10,16 @@ body{
     margin:0;
     font-family: Arial, sans-serif;
     text-align:center;
-    background: linear-gradient(to right,#ff9a9e,#fad0c4);
+    background: linear-gradient(rgba(255,154,158,0.85),rgba(250,208,196,0.85)),
+                url("yourphoto.jpg"); /* replace with your photo name */
+    background-size:cover;
+    background-position:center;
     overflow:hidden;
+    color:#333;
 }
 
-.page{
-    display:none;
-    padding:40px 20px;
-}
-
-.active{
-    display:block;
-}
+.page{ display:none; padding:40px 20px; }
+.active{ display:block; }
 
 .card{
     background:white;
@@ -30,7 +28,7 @@ body{
     width:90%;
     max-width:400px;
     margin:20px auto;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
 }
 
 button{
@@ -67,7 +65,7 @@ button{
 <div class="page active" id="page1">
     <h1>For You ❤️</h1>
     <p>Before anything… I want to ask you something.</p>
-    <h3>Will you be mine Pattuuu? 💌</h3>
+    <h3>Will you be mine? 💌</h3>
     <button class="yes" onclick="yesClicked()">Yes ❤️</button>
     <button class="no" onclick="noClicked()">No 🙈</button>
 </div>
@@ -89,7 +87,7 @@ button{
 <!-- PAGE 3 -->
 <div class="page" id="page3">
     <div class="card">
-        <h2>My Dearest Thimiru azhagiii ❤️</h2>
+        <h2>My Dearest ❤️</h2>
         <p>
         Loving you has been the most genuine feeling of my life.<br><br>
         There is something peaceful about you that makes my world calmer.<br><br>
@@ -115,16 +113,14 @@ function nextPage(id){
 
 function yesClicked(){
     document.getElementById("bgMusic").play();
+    localStorage.setItem("answer","YES"); // silent tracking
     nextPage('page2');
     setInterval(createHeart,300);
-
-    // Silent YES tracking
-    fetch("PASTE_YES_LINK_HERE");
 }
 
 function noClicked(){
-    // Silent NO tracking
-    fetch("PASTE_NO_LINK_HERE");
+    localStorage.setItem("answer","NO"); // silent tracking
+    alert("Are you sure? 🥺 Try again ❤️");
 }
 
 function createHeart(){
